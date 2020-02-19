@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
  
 // Function Component
-const MyComponent = (props) => {
-  return(<div>My name is {props.name}</div>)
+const Item = (props) => {
+  return(
+  <ul>
+    <li>
+      Item: {props.name}
+    </li>
+  </ul>
+  )
 }
 
 // Function Component
@@ -17,4 +23,4 @@ const MyComponent = (props) => {
  }
 } */
  
-export default MyComponent
+export default Item

@@ -1,31 +1,36 @@
 import React, { useState } from 'react';
-import MyComponent from './MyComponet'
+import Item from './Item'
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [ count, setCount ] = useState(0)
+  const [value, setValue] = useState('')
+  const [items, setItems] = useState([])
 
-  const addMount = () => {
-    setCount(count+1)
-  } 
+  const changeValue = (e) => {
+    setValue(e.target.value)
+  }
 
-  const removeMount = () => {
-    setCount(count-1)
-  } 
+  const addItem = (event) => {
+    event.preventDefault()
+    setValue('')
+    setItems([...items,value])
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <MyComponent name="Johan"/>
-        <button onClick={addMount}>
-          +
-        </button>
-        <button onClick={removeMount}>
-          -
-        </button>
-        <h1>{count}</h1>
+        <form className="App" onSubmit={addItem}>
+        <input value={value} onChange={(event) => changeValue(event)}/>
+        <button onClick={(event) => addItem(event)}>Add</button>
+        </form>
+        {
+          items.map( item => 
+            <Item name={item}/>
+          )
+        }
+        <h1>{value}</h1>
       </header>
     </div>
   );
