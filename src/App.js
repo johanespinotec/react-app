@@ -5,31 +5,36 @@ import './App.css';
 
 function App() {
   const [value, setValue] = useState('')
-  const [items, setItems] = useState([])
+  const [pokemonImg, setPokemonImg] = useState([])
 
-  const changeValue = (e) => {
+   const changeValue = (e) => {
     setValue(e.target.value)
   }
 
-  const addItem = (event) => {
+  const addPokemon = (event) => {
     event.preventDefault()
-    setValue('')
-    setItems([...items,value])
+    
+    const url = `https://pokeapi.co/api/v2/pokemon/${value}`
+    fetch(url)
+    .then( res => res.json())
+    .then( data => setPokemonImg(data.sprites.front_default))
+
   }
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <form className="App" onSubmit={addItem}>
-        <input value={value} onChange={(event) => changeValue(event)}/>
-        <button onClick={(event) => addItem(event)}>Add</button>
+        <form className="App" onSubmit={addPokemon}>
+        <input value={value} onChange={changeValue}/>
+        <button>Add</button>
         </form>
-        <ul>
+        {/* <ul>
           {
             items.map( item => <Item name={item}/>)
           }
-        </ul>
+        </ul> */}
+        <img src={pokemonImg} alt={pokemonImg} width={300}></img>
         <h1>{value}</h1>
       </header>
     </div>
