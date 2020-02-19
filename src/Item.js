@@ -3,11 +3,9 @@ import React, { Component } from 'react'
 // Function Component
 const Item = (props) => {
   return(
-  <ul>
     <li>
-      Item: {props.name}
+      {props.name.toUpperCase()}
     </li>
-  </ul>
   )
 }
 

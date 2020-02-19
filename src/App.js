@@ -25,11 +25,11 @@ function App() {
         <input value={value} onChange={(event) => changeValue(event)}/>
         <button onClick={(event) => addItem(event)}>Add</button>
         </form>
-        {
-          items.map( item => 
-            <Item name={item}/>
-          )
-        }
+        <ul>
+          {
+            items.map( item => <Item name={item}/>)
+          }
+        </ul>
         <h1>{value}</h1>
       </header>
     </div>
