@@ -23,12 +23,12 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <form className="App" onSubmit={addItem}>
         <input value={value} onChange={(event) => changeValue(event)}/>
-        <button onClick={(event) => addItem(event)}>Add</button>
+        <button>Add</button>
         </form>
         <ul>
-          {
-            items.map( item => <Item name={item}/>)
-          }
+        {
+          items.map( item => <Item name={item}/>)
+        }
         </ul>
         <h1>{value}</h1>
       </header>
