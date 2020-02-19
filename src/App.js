@@ -4,7 +4,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState('bulbasaur')
   const [pokemonImg, setPokemonImg] = useState('')
   const [pokemonName, setPokemonName] = useState('')
 
