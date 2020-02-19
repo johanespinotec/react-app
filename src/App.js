@@ -5,7 +5,8 @@ import './App.css';
 
 function App() {
   const [value, setValue] = useState('')
-  const [pokemonImg, setPokemonImg] = useState([])
+  const [pokemonImg, setPokemonImg] = useState('')
+  const [pokemonName, setPokemonName] = useState('')
 
    const changeValue = (e) => {
     setValue(e.target.value)
@@ -13,12 +14,14 @@ function App() {
 
   const addPokemon = (event) => {
     event.preventDefault()
-    
+    setPokemonName(value)
     const url = `https://pokeapi.co/api/v2/pokemon/${value}`
     fetch(url)
     .then( res => res.json())
-    .then( data => setPokemonImg(data.sprites.front_default))
-
+    .then( data => {
+      setPokemonImg(data.sprites.front_default)
+    })
+    setValue('')
   }
 
   return (
@@ -35,7 +38,7 @@ function App() {
           }
         </ul> */}
         <img src={pokemonImg} alt={pokemonImg} width={300}></img>
-        <h1>{value}</h1>
+        <h1>{pokemonName}</h1>
       </header>
     </div>
   );
