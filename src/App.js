@@ -11,8 +11,8 @@ function App() {
     setValue(e.target.value)
   }
 
-  const addItem = (event) => {
-    event.preventDefault()
+  const addItem = (e) => {
+    e.preventDefault()
     setValue('')
     setItems([...items,value])
   }
@@ -22,7 +22,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <form className="App" onSubmit={addItem}>
-        <input value={value} onChange={(event) => changeValue(event)}/>
+        <input value={value} onChange={changeValue}/>
         <button>Add</button>
         </form>
         <ul>
