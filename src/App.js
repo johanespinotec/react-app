@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Item from './Item'
 import logo from './logo.svg';
 import './App.css';
+import 'materialize-css/dist/css/materialize.min.css'
 
 function App() {
   const [value, setValue] = useState('bulbasaur')
@@ -30,8 +30,8 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <form className="App" onSubmit={addPokemon}>
         <input value={value} onChange={changeValue}/>
-        <button>Add</button>
         </form>
+        <a class="waves-effect waves-light btn">button</a>
         {/* <ul>
           {
             items.map( item => <Item name={item}/>)
