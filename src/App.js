@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'materialize-css/dist/css/materialize.min.css'
+import 'materialize-css/dist/js/materialize'
 
 function App() {
-  const [value, setValue] = useState('bulbasaur')
+  const [value, setValue] = useState()
   const [pokemonImg, setPokemonImg] = useState('')
   const [pokemonName, setPokemonName] = useState('')
 
@@ -21,6 +22,7 @@ function App() {
     .then( data => {
       setPokemonImg(data.sprites.front_default)
     })
+    .catch(e => console.log(e))
     setValue('')
   }
 
@@ -28,10 +30,16 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <form className="App" onSubmit={addPokemon}>
-        <input value={value} onChange={changeValue}/>
+        <form onSubmit={addPokemon}>
+          <div class="input-field inline" style={{color: 'white'}}>
+            <input id="pokemon" value={value} onChange={changeValue}/>
+            <label for="pokemon">Pokemon</label>
+          </div>
+          
+          <button class="btn waves-effect waves-light" type="submit" name="action">
+            Submit
+          </button>
         </form>
-        <a class="waves-effect waves-light btn">button</a>
         {/* <ul>
           {
             items.map( item => <Item name={item}/>)
